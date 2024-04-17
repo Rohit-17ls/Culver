@@ -1,5 +1,7 @@
 package listeners;
 
+import editor.Project;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +27,7 @@ public class OpenActionListener implements ActionListener {
         if(status == JFileChooser.APPROVE_OPTION){
             this.path = fileChooser.getSelectedFile().getAbsolutePath();
             System.out.println(path);
+            Project.setProjectPath(path);
         }
 
         ActionEvent actionEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Folder Opened");

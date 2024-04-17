@@ -11,6 +11,8 @@ import ui.scroll.CulverScrollPane;
 import ui.textpane.EditorTextPane;
 
 import javax.swing.border.MatteBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
@@ -37,6 +39,7 @@ public class EditorPanelBuilder {
 
         WrapperPanel wrapper = new WrapperPanel(new MatteBorder(0, 0, 0, 1, CulverColor.DARK_GRAY.brighter()));
         CulverFileTree fileTree = (CulverFileTree) wrapper.wrap(new CulverFileTree());
+        editorPanel.setFileTree(fileTree);
 
         openActionListener.addListener(new ActionListener() {
             @Override
@@ -48,7 +51,6 @@ public class EditorPanelBuilder {
                     @Override
                     public void run(){
                         String path = openActionListener.path;
-                        System.out.println("Modify the CulverFileTree");
 
                         fileTree.clearTree("");
 
@@ -87,11 +89,11 @@ public class EditorPanelBuilder {
         editorPanel.add(new CulverScrollPane(wrapper), BorderLayout.WEST);
 
         EditorTextPane editorTextPane = new EditorTextPane();
-        CulverScrollPane scrollPane = new CulverScrollPane(editorTextPane);
 
         CulverTabbedPane tabbedPane = new CulverTabbedPane();
-        tabbedPane.addTab("Welcome", scrollPane);
-        editorTextPane.setText("Pick a project/folder to get started : file -> open");
+        editorPanel.setTabbedPane(tabbedPane);
+        tabbedPane.addTab("Welcome", editorTextPane);
+        editorTextPane.setText("Pick a project/folder to get started : file -> open\nC:\\Users\\Rohit\\Music\\Projects\\Suave");
 
 
         editorPanel.add(tabbedPane, BorderLayout.CENTER);
@@ -114,7 +116,10 @@ public class EditorPanelBuilder {
                                 @Override
                                 public void run(){
                                     File file = new File(culverNode.getFilePath());
-                                    tabbedPane.addTab(culverNode.getUserObject().toString(), new CulverScrollPane(new EditorTextPane(file)));
+                                    EditorTextPane editorTextPane = new EditorTextPane(file);
+
+
+                                    tabbedPane.addTab(culverNode.getUserObject().toString(), new EditorTextPane(file));
                                 }
                             });
                         }
@@ -122,6 +127,7 @@ public class EditorPanelBuilder {
                 }
             }
         });
+
 
 
 

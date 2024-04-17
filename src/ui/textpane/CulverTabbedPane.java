@@ -1,15 +1,19 @@
 package ui.textpane;
 
+import listeners.TabChangeListener;
 import ui.CulverColor;
+import ui.scroll.CulverScrollPane;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretListener;
 import java.awt.*;
-import java.util.ArrayList;
+ import java.util.ArrayList;
 
 public class CulverTabbedPane extends JTabbedPane {
 
     protected ArrayList<CulverTabbedPaneTab> tabs = new ArrayList<>();
+    public static CaretListener caretListener;
 
     public CulverTabbedPane(){
         super();
@@ -20,10 +24,15 @@ public class CulverTabbedPane extends JTabbedPane {
 
     @Override
     public void addTab(String title, Component component){
-        super.addTab(title, component);
+        super.addTab(title, new CulverScrollPane(component));
 
-        CulverTabbedPaneTab newTab = new CulverTabbedPaneTab(this, title);
+        EditorTextPane editorTextPane = (EditorTextPane) component;
+        editorTextPane.addCaretListener(caretListener);
+
+        CulverTabbedPaneTab newTab = new CulverTabbedPaneTab(this, editorTextPane, title);
+
         tabs.add(newTab);
+
 
         System.out.println(this.getTabCount()-1);
         this.setTabComponentAt(this.getTabCount() - 1, newTab);
@@ -40,5 +49,16 @@ public class CulverTabbedPane extends JTabbedPane {
         }
     }
 
+    public void addTabChangeListener(TabChangeListener listener){
+        super.addChangeListener(listener);
+    }
+
+    public void removeTabChangeListener(TabChangeListener listener){
+        super.removeChangeListener(listener);
+    }
+
+    public CulverTabbedPaneTab getTabAt(int index){
+        return this.tabs.get(index);
+    }
 
 }

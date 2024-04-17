@@ -7,8 +7,11 @@ import java.awt.*;
 
 public class CulverScrollPane extends JScrollPane{
 
+    protected Component component;
+
     public CulverScrollPane(Component component){
         super(component);
+        this.component = component;
         this.getVerticalScrollBar().setBackground(CulverColor.PRIMARY_BACKGROUND);
         this.getVerticalScrollBar().setUI(new BasicScrollBarUI(){
             @Override
@@ -25,6 +28,10 @@ public class CulverScrollPane extends JScrollPane{
             }
 
         });
+    }
+
+    public Component getComponent(){
+        return this.component;
     }
 
 }

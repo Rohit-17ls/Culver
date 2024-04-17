@@ -1,25 +1,29 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.awt.*;
 
 import builders.CulverMenuBuilder;
 import builders.EditorPanelBuilder;
 import builders.UnknownMenuTypeException;
 
+import editor.Project;
 import listeners.OpenActionListener;
+import listeners.TabChangeListener;
 import ui.CulverColor;
 import ui.Window;
 import ui.panels.BottomPanel;
 import builders.CulverBottomPanelBuilder;
 import ui.panels.EditorPanel;
+import ui.scroll.CulverScrollPane;
+import ui.textpane.CulverTabbedPane;
+import ui.textpane.CulverTabbedPaneTab;
+import ui.textpane.EditorTextPane;
 
 import javax.swing.*;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.event.ChangeEvent;
+import java.awt.event.FocusEvent;
 import java.lang.Runnable;
 
-/*
-C:\Users\Rohit\Music\Projects\Social-Network-Management-System\Client\node_modules
-C:\Users\Rohit\Music\Projects\Social-Network-Management-System
- */
 
 public class Main {
 
@@ -44,11 +48,43 @@ public class Main {
             JMenuBar menuBar = menuBuilder.buildMainMenu();
             window.add(menuBar, BorderLayout.NORTH);
 
-            EditorPanel editorPanel = new EditorPanelBuilder(openActionListener).buildEditorPanel();
+            CulverBottomPanelBuilder bottomPanelBuilder = new CulverBottomPanelBuilder();
+            BottomPanel bottomPanel = bottomPanelBuilder.buildBottomPanel();
+
+
+
+            EditorPanelBuilder editorPanelBuilder = new EditorPanelBuilder(openActionListener);
+            EditorPanel editorPanel = editorPanelBuilder.buildEditorPanel();
+
+            editorPanel.getTabbedPane().caretListener = new CaretListener() {
+                @Override
+                public void caretUpdate(CaretEvent e) {
+                    CulverScrollPane scrollWrapper = (CulverScrollPane) editorPanel.getTabbedPane().getSelectedComponent();
+                    EditorTextPane editorTextPane = (EditorTextPane)scrollWrapper.getComponent();
+                    bottomPanel.setCurrentCursorPosition(editorTextPane.getText(), e.getMark());
+                }
+            };
+
             window.add(editorPanel, BorderLayout.CENTER);
 
 
-            BottomPanel bottomPanel = new CulverBottomPanelBuilder().buildBottomPanel();
+            editorPanel.getTabbedPane().addChangeListener(new TabChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    CulverTabbedPane tabbedPane = (CulverTabbedPane) e.getSource();
+                    int index = tabbedPane.getSelectedIndex();
+
+                    CulverTabbedPaneTab tab = tabbedPane.getTabAt(index);
+
+                    bottomPanel.setCurrentFileName(tab.getFilePath());
+                }
+            });
+
+
+
+
+
+
             window.add(bottomPanel, BorderLayout.SOUTH);
 
         }catch(UnknownMenuTypeException umte){

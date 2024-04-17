@@ -20,6 +20,8 @@ public class CulverBottomPanelBuilder{
 
         SimpleLabel cursorPositionLabel = new SimpleLabel(0 + ":" + 0);
 
+        bottomPanel.setFileNameLabel(fileNameLabel);
+        bottomPanel.setCursorPositionLabel(cursorPositionLabel);
 
         bottomPanel.add(fileNameLabel);
         bottomPanel.add(cursorPositionLabel);
