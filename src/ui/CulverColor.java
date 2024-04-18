@@ -9,6 +9,7 @@ public class CulverColor extends Color {
     public static Color SECONDARY_FOREGROUND = Color.LIGHT_GRAY;
     public static Color SCROLLBAR_THUMB_COLOR = new Color(76, 76, 84);
     public static Color TRANSPARENT = new Color(0, 0, 0, 0);
+    public static Color COMMAND_COLOR = new Color(255, 75, 206);
 
     public CulverColor(int r, int g, int b){
         super(r, g, b);

@@ -11,6 +11,7 @@ import ui.CulverColor;
 import ui.Window;
 import ui.panels.BottomPanel;
 import builders.CulverBottomPanelBuilder;
+import ui.panels.CommandPanel;
 import ui.panels.EditorPanel;
 import ui.scroll.CulverScrollPane;
 import ui.textpane.CulverTabbedPane;
@@ -48,8 +49,9 @@ public class Main {
             JMenuBar menuBar = menuBuilder.buildMainMenu();
             window.add(menuBar, BorderLayout.NORTH);
 
-            CulverBottomPanelBuilder bottomPanelBuilder = new CulverBottomPanelBuilder();
-            BottomPanel bottomPanel = bottomPanelBuilder.buildBottomPanel();
+            BottomPanel bottomPanel = BottomPanel.getInstance();
+
+            CommandPanel commandPanel = new CommandPanel();
 
 
 
@@ -79,11 +81,6 @@ public class Main {
                     bottomPanel.setCurrentFileName(tab.getFilePath());
                 }
             });
-
-
-
-
-
 
             window.add(bottomPanel, BorderLayout.SOUTH);
 
