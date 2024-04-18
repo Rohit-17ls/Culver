@@ -32,10 +32,6 @@ public class CulverBottomPanelBuilder{
 
         bottomPanel.add(new CommandPanel(), BorderLayout.NORTH);
 
-//        BorderLayoutWrapper wrapper = new BorderLayoutWrapper();
-//        wrapper.addWestComponent(fileNameLabel);
-//        wrapper.addCenterComponent(gitLabel);
-//        wrapper.addEastComponent(cursorPositionLabel);
 
         JPanel wrapper = new JPanel();
         wrapper.setBackground(CulverColor.SECONDARY_BACKGROUND);

@@ -1,6 +1,8 @@
 package editor;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -13,8 +15,8 @@ public class GitUtilities {
 
         HashMap<String, String> gitConfigMap = new HashMap<>();
 
-        String gitConfigFilePath = path + "\\.git\\config";
-        File file = new File(gitConfigFilePath);
+        Path gitConfigFilePath = Paths.get(path, ".git", "config");
+        File file = new File(gitConfigFilePath.toString());
 
         try{
             Scanner scanner = new Scanner(file);
@@ -33,7 +35,6 @@ public class GitUtilities {
 
                 line = line.trim();
                 String[] pair = line.split(" = ");
-                System.out.println(pair[0] + " " +  pair[1]);
                 gitConfigMap.put(pair[0], pair[1]);
             }
 
