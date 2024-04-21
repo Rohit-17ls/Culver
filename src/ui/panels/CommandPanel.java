@@ -11,10 +11,12 @@ import java.awt.*;
 
 public class CommandPanel extends JPanel {
 
+    private static CommandPanel commandPanel;
+
     protected SimpleLabel commandLabel;
     protected CommandField commandField;
 
-    public CommandPanel(){
+    private CommandPanel(){
         super();
 
         this.setBackground(CulverColor.SECONDARY_BACKGROUND);
@@ -26,6 +28,18 @@ public class CommandPanel extends JPanel {
         this.setBorder(new EmptyBorder(3, 0, 3, 0));
 
 
+    }
+
+    public static CommandPanel getInstance(){
+        if(commandPanel == null){
+            synchronized(CommandPanel.class){
+                if(commandPanel == null){
+                    commandPanel = new CommandPanel();
+                }
+            }
+        }
+
+        return commandPanel;
     }
 
     public void addCommandLabel(){

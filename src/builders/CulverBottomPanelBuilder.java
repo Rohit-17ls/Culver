@@ -21,7 +21,7 @@ public class CulverBottomPanelBuilder{
         SimpleLabel fileNameLabel = new SimpleLabel("Welcome");
         fileNameLabel.setBorder(new EmptyBorder(0, 10, 0, 0));
 
-        SimpleLabel gitLabel = new SimpleLabel("<git details>");
+        SimpleLabel gitLabel = new SimpleLabel("<no git>");
 
         SimpleLabel cursorPositionLabel = new SimpleLabel(0 + ":" + 0);
         cursorPositionLabel.setBorder(new EmptyBorder(0, 0, 0, 10));
@@ -30,7 +30,7 @@ public class CulverBottomPanelBuilder{
         bottomPanel.setCursorPositionLabel(cursorPositionLabel);
         bottomPanel.setGitLabel(gitLabel);
 
-        bottomPanel.add(new CommandPanel(), BorderLayout.NORTH);
+        bottomPanel.add(CommandPanel.getInstance(), BorderLayout.NORTH);
 
 
         JPanel wrapper = new JPanel();

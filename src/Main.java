@@ -51,9 +51,6 @@ public class Main {
 
             BottomPanel bottomPanel = BottomPanel.getInstance();
 
-            CommandPanel commandPanel = new CommandPanel();
-
-
 
             EditorPanelBuilder editorPanelBuilder = new EditorPanelBuilder(openActionListener);
             EditorPanel editorPanel = editorPanelBuilder.buildEditorPanel();
