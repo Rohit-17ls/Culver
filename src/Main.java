@@ -4,14 +4,11 @@ import builders.CulverMenuBuilder;
 import builders.EditorPanelBuilder;
 import builders.UnknownMenuTypeException;
 
-import editor.Project;
 import listeners.OpenActionListener;
 import listeners.TabChangeListener;
 import ui.CulverColor;
 import ui.Window;
 import ui.panels.BottomPanel;
-import builders.CulverBottomPanelBuilder;
-import ui.panels.CommandPanel;
 import ui.panels.EditorPanel;
 import ui.scroll.CulverScrollPane;
 import ui.textpane.CulverTabbedPane;
@@ -22,7 +19,6 @@ import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.event.ChangeEvent;
-import java.awt.event.FocusEvent;
 import java.lang.Runnable;
 
 
@@ -34,6 +30,7 @@ public class Main {
         UIManager.put("Tree.rendererFillBackground", false);
         UIManager.put("TabbedPane.background", CulverColor.SECONDARY_BACKGROUND);
         UIManager.put("TabbedPane.foreground", CulverColor.SECONDARY_FOREGROUND);
+        UIManager.put("TabbedPane.focus", CulverColor.GREEN);
         UIManager.put("TabbedPane.selected", CulverColor.DARK_GRAY);
     }
 

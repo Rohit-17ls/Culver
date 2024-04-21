@@ -7,7 +7,9 @@ import java.util.Arrays;
 
 public class Project {
 
-    private static Project project;
+    private static class InstanceHolder{
+        private static final Project INSTANCE = new Project("");
+    }
 
     private String projectPath;
 
@@ -16,15 +18,7 @@ public class Project {
     }
 
     public static Project getInstance(){
-        if(project == null){
-            synchronized(Project.class){
-                if(project == null){
-                    project = new Project("");
-                }
-            }
-        }
-
-        return project;
+        return InstanceHolder.INSTANCE;
     }
 
     public String getProjectPath(){

@@ -11,7 +11,9 @@ import java.awt.*;
 
 public class CommandPanel extends JPanel {
 
-    private static CommandPanel commandPanel;
+    private static class InstanceHolder{
+        private final static CommandPanel INSTANCE = new CommandPanel();
+    }
 
     protected SimpleLabel commandLabel;
     protected CommandField commandField;
@@ -31,15 +33,7 @@ public class CommandPanel extends JPanel {
     }
 
     public static CommandPanel getInstance(){
-        if(commandPanel == null){
-            synchronized(CommandPanel.class){
-                if(commandPanel == null){
-                    commandPanel = new CommandPanel();
-                }
-            }
-        }
-
-        return commandPanel;
+        return InstanceHolder.INSTANCE;
     }
 
     public void addCommandLabel(){

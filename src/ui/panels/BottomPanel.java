@@ -18,8 +18,9 @@ import java.util.HashMap;
 
 public class BottomPanel extends JPanel {
 
-    private static BottomPanel bottomPanel;
-    private final static CulverBottomPanelBuilder bottomPanelBuilder = new CulverBottomPanelBuilder();
+    private static class InstanceHolder{
+        private static final BottomPanel INSTANCE = new CulverBottomPanelBuilder().buildBottomPanel(new BottomPanel());
+    }
 
     protected SimpleLabel fileNameLabel;
     protected SimpleLabel gitLabel;
@@ -33,15 +34,7 @@ public class BottomPanel extends JPanel {
     }
 
     public static BottomPanel getInstance(){
-        if(bottomPanel == null){
-            synchronized (BottomPanel.class){
-                if(bottomPanel == null){
-                    bottomPanel = bottomPanelBuilder.buildBottomPanel(new BottomPanel());
-                }
-            }
-        }
-
-        return bottomPanel;
+        return InstanceHolder.INSTANCE;
     }
 
     public void setFileNameLabel(SimpleLabel fileNameLabel){
@@ -75,9 +68,13 @@ public class BottomPanel extends JPanel {
         Runnable runnable = new Runnable(){
             @Override
             public void run(){
-                File file = new File(name);
-                Project project = Project.getInstance();
-                fileNameLabel.setText(String.format("%s \t %dB", name, file.length()));
+                try{
+                    File file = new File(name);
+                    fileNameLabel.setText(String.format("%s \t %dB", name, file.length()));
+                }catch(Exception e){
+                    fileNameLabel.setText("NO FILE SELECTED \t 0B");
+                }
+
             }
         };
 
