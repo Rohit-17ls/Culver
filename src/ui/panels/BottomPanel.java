@@ -1,9 +1,9 @@
 package ui.panels;
 
-import builders.CulverBottomPanelBuilder;
+import ui.builders.CulverBottomPanelBuilder;
 import editor.GitUtilities;
 import editor.Project;
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.labels.SimpleLabel;
 
 import javax.swing.*;
@@ -12,8 +12,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 
 public class BottomPanel extends JPanel {
@@ -25,6 +23,7 @@ public class BottomPanel extends JPanel {
     protected SimpleLabel fileNameLabel;
     protected SimpleLabel gitLabel;
     protected SimpleLabel cursorPositionLabel;
+    protected int cursorOffset;
 
     public BottomPanel(){
         super();
@@ -104,8 +103,13 @@ public class BottomPanel extends JPanel {
         EventQueue.invokeLater(runnable);
     }
 
+    public int getCursorOffset(){
+        return this.cursorOffset;
+    }
+
     public void setCurrentCursorPosition(String text, int mark){
 
+        this.cursorOffset = mark;
         int lines = 0;
         int lastLineIndex = 0;
         for(int i = 0; i < mark; i++){
@@ -124,7 +128,9 @@ public class BottomPanel extends JPanel {
             }
         };
 
+
         EventQueue.invokeLater(runnable);
+
 
     }
 

@@ -1,6 +1,6 @@
 package ui.labels;
 
-import ui.CulverColor;
+import ui.colors.CulverColor;
 
 import javax.swing.*;
 

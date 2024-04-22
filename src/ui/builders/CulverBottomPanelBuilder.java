@@ -1,10 +1,9 @@
-package builders;
+package ui.builders;
 
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.labels.SimpleLabel;
 import ui.panels.BottomPanel;
 import ui.panels.CommandPanel;
-import ui.wrappers.BorderLayoutWrapper;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

@@ -1,6 +1,6 @@
 package ui.filetree;
 
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.cellrenderer.CulverCellRenderer;
 
 import javax.swing.*;

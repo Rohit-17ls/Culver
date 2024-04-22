@@ -1,7 +1,6 @@
 package ui.panels;
 
-import listeners.TabChangeListener;
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.filetree.CulverFileTree;
 import ui.textpane.CulverTabbedPane;
 

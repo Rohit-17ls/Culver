@@ -1,6 +1,6 @@
 package ui.textfield;
 
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.caret.CommandCaret;
 
 import javax.swing.*;

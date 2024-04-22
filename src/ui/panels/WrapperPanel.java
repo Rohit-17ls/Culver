@@ -1,7 +1,5 @@
 package ui.panels;
 
-import ui.CulverColor;
-
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;

@@ -1,12 +1,12 @@
 import java.awt.*;
 
-import builders.CulverMenuBuilder;
-import builders.EditorPanelBuilder;
-import builders.UnknownMenuTypeException;
+import ui.builders.CulverMenuBuilder;
+import ui.builders.EditorPanelBuilder;
+import ui.builders.UnknownMenuTypeException;
 
 import listeners.OpenActionListener;
 import listeners.TabChangeListener;
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.Window;
 import ui.panels.BottomPanel;
 import ui.panels.EditorPanel;
@@ -58,6 +58,7 @@ public class Main {
                     CulverScrollPane scrollWrapper = (CulverScrollPane) editorPanel.getTabbedPane().getSelectedComponent();
                     EditorTextPane editorTextPane = (EditorTextPane)scrollWrapper.getComponent();
                     bottomPanel.setCurrentCursorPosition(editorTextPane.getText(), e.getMark());
+//                    editorTextPane.setCursorOffset(offset);
                 }
             };
 

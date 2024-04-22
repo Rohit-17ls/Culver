@@ -1,7 +1,6 @@
 package ui.panels;
 
-import ui.CulverColor;
-import ui.caret.CommandCaret;
+import ui.colors.CulverColor;
 import ui.labels.SimpleLabel;
 import ui.textfield.CommandField;
 

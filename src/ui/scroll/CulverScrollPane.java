@@ -1,5 +1,5 @@
 package ui.scroll;
-import ui.CulverColor;
+import ui.colors.CulverColor;
 
 import javax.swing.JScrollPane;
 import javax.swing.plaf.basic.BasicScrollBarUI;

@@ -1,17 +1,13 @@
-package builders;
+package ui.builders;
 
 
 import listeners.OpenActionListener;
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.CulverMenu;
 import ui.CulverMenuItem;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 
 public class CulverMenuBuilder {
 

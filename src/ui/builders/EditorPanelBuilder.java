@@ -1,7 +1,7 @@
-package builders;
+package ui.builders;
 
 import listeners.OpenActionListener;
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.filetree.CulverFileTree;
 import ui.filetree.CulverMutableTreeNode;
 import ui.textpane.CulverTabbedPane;
@@ -11,8 +11,6 @@ import ui.scroll.CulverScrollPane;
 import ui.textpane.EditorTextPane;
 
 import javax.swing.border.MatteBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
@@ -93,8 +91,11 @@ public class EditorPanelBuilder {
         CulverTabbedPane tabbedPane = new CulverTabbedPane();
         editorPanel.setTabbedPane(tabbedPane);
         tabbedPane.addTab("Welcome", editorTextPane);
-        editorTextPane.setText("Pick a project/folder to get started : file -> open\nC:\\Users\\Rohit\\Music\\Projects\\Suave");
 
+        editorTextPane.setText("Pick a project/folder to get started : " +
+                                "file -> open\nC:\\Users\\Rohit\\Music\\Projects\\Suave\n" +
+                                "C:\\Users\\Rohit\\Music\\Projects\\Suave\\src\\backend");
+//        editorTextPane.setUpKeyListener();
 
         editorPanel.add(tabbedPane, BorderLayout.CENTER);
 

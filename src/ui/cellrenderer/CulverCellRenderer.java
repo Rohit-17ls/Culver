@@ -1,10 +1,9 @@
 package ui.cellrenderer;
 
-import ui.CulverColor;
+import ui.colors.CulverColor;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.TreeCellRenderer;
 import java.awt.*;
 
 //public class CulverCellRenderer implements TreeCellRenderer {

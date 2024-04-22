@@ -1,4 +1,4 @@
-package builders;
+package ui.builders;
 
 public class UnknownMenuTypeException extends Exception{
 

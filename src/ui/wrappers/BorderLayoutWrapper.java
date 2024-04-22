@@ -1,6 +1,6 @@
 package ui.wrappers;
 
-import ui.CulverColor;
+import ui.colors.CulverColor;
 
 import javax.swing.*;
 import java.awt.*;

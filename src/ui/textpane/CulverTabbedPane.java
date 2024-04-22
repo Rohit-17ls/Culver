@@ -1,7 +1,7 @@
 package ui.textpane;
 
 import listeners.TabChangeListener;
-import ui.CulverColor;
+import ui.colors.CulverColor;
 import ui.scroll.CulverScrollPane;
 
 import javax.swing.*;
@@ -20,6 +20,7 @@ public class CulverTabbedPane extends JTabbedPane {
         this.setBackground(CulverColor.SECONDARY_BACKGROUND);
         this.setBorder(new EmptyBorder(0, 0, 0, 0));
         this.setForeground(CulverColor.WHITE);
+
     }
 
     @Override
